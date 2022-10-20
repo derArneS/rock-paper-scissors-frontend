@@ -1,0 +1,52 @@
+nav {
+    display: flex; /* makes the elements inline */
+    width: 100%;
+    border-bottom: 1px solid var(--border-color);
+}
+
+nav > .nav-element {
+    padding: 1.5rem 2rem; /* top & bottom , right */ 
+    display: flex;
+    gap: 1.5rem;
+    border-left: 1px solid var(--border-color);
+    align-items: center;
+    justify-content: center;
+}
+
+#nav-logo,
+#nav-link {
+    flex-basis: calc(100% / 2.75);
+}
+
+#nav-social,
+#nav-user {
+    flex-grow: 1;
+}
+
+#nav-logo {
+    justify-content: flex-start;
+    border-left: 0px;
+}
+
+.nav-element > a > fa-icon {
+    font-size: 1.5rem;
+}
+
+#nav-link {
+    gap: 6rem;
+}
+
+
+#nav-social {
+    gap: 3.5rem;
+}
+
+.nav-element > a {
+    font-family: 'Times New Roman', Times, serif;
+    font-weight: bold;
+    color: white;
+}
+
+a {
+    text-decoration: none;
+}

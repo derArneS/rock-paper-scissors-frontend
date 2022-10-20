@@ -1,1 +1,18 @@
 /* You can add global styles to this file, and also import other style files */
+:root{
+    --backgroud-color: rgb(5, 5, 42);
+    --border-color: rgb(255, 255, 255, 0.15);
+}
+
+* {
+    box-sizing: border-box; /* so padding and margin matter for calculations */
+}
+
+body {
+    background-color: var(--backgroud-color);
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    margin: 0px;
+    overflow: hidden;
+}
