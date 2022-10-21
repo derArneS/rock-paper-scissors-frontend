@@ -1,2 +1,2 @@
-<app-start-playing class="home-element"></app-start-playing>
-<app-login class="home-element"></app-login>
+<app-start-playing [className]="jwt ? 'full-width' : 'half-width'" ></app-start-playing>
+<app-login class="half-width" *ngIf="!jwt" [setJwt]="setJwtFunc"></app-login>
