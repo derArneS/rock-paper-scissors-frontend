@@ -3,19 +3,20 @@ import { faPlaneDeparture, faUser } from '@fortawesome/free-solid-svg-icons';
 import { faLinkedin, faGithub } from '@fortAwesome/free-brands-svg-icons';
 
 @Component({
-  selector: 'app-navbar',
-  templateUrl: './navbar.component.html',
-  styleUrls: ['./navbar.component.css']
+    selector: 'app-navbar',
+    templateUrl: './navbar.component.html',
+    styleUrls: ['./navbar.component.css']
 })
 export class NavbarComponent implements OnInit {
 
-  constructor() { }
+    faPlaneDeparture = faPlaneDeparture;
+    faLinkedin = faLinkedin;
+    faGithub = faGithub;
+    faUser = faUser;
 
-  ngOnInit(): void {
-  }
+    constructor() { }
 
-  faPlaneDeparture = faPlaneDeparture;
-  faLinkedin = faLinkedin;
-  faGithub = faGithub;
-  faUser = faUser;
+    ngOnInit(): void {
+    }
+
 }

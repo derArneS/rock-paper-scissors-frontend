@@ -1,4 +1,35 @@
-p {
-    color: white;
-    margin: 0px;
+:host {
+    display: flex;
+    flex-flow: column;
+    flex: 1 1 auto;
+    overflow-y: auto;
+    justify-content: center;
+    align-items: center;
+}
+
+#play-inner-circle,
+#play-circle {
+    border-radius: 50%;
+    display: inline-block;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#play-circle {
+    height: 4rem;
+    width: 4rem;
+    background-color: white;
+}
+
+
+#play-inner-circle {
+    height: 3rem;
+    width: 3rem;
+    background-color: var(--backgroud-color);
+}
+
+#play-inner-circle > fa-icon {
+    font-size: 2rem;
+    margin-left: 0.33rem;
 }
