@@ -12,6 +12,11 @@ export class LoginComponent implements OnInit {
 
     @Input() setJwt!: Function;
 
+    loginForm = this.formBuilder.group({
+        username: '',
+        password: ''
+    });
+
     constructor(
         private userService: UserService,
         private formBuilder: FormBuilder
@@ -23,18 +28,13 @@ export class LoginComponent implements OnInit {
 
     }
 
-    loginForm = this.formBuilder.group({
-        username: '',
-        password: ''
-    });
-
     onSubmit(): void {
-        console.warn('Your login has been submitted', this.loginForm.value);
+        console.debug('Your login has been submitted', this.loginForm.value);
         this.userService.authenticate(this.loginForm.value.username!, this.loginForm.value.password!).subscribe((data: Authentication) => {
             this.userService.setAuth(data);
             this.userService.broadcastJwtChange(data.accessToken);
             this.setJwt(data.accessToken);
-            console.warn('this is the object', this.userService.getAuth())
+            console.debug('this is the object', this.userService.getAuth())
         })
             
     }
