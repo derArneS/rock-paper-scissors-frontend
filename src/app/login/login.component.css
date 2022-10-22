@@ -15,7 +15,12 @@ form > * {
 }
 
 #username {
+    margin-top: 1rem;
     margin-bottom: 1rem;
+}
+
+#login-footer {
+    height: 2rem;
 }
 
 #login-footer > a {
