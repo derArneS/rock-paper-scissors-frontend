@@ -1,5 +1,6 @@
-<div id="result" [ngClass]="{'growing': growing}">
-    {{message}}
+<div id="result">
+    <div id="message" [ngClass]="{'growing': growing}">{{message}}</div>
+    <div id="computer-shape" *ngIf="computerShape.length > 0">The computer has chosen {{computerShape}}.</div>
 </div>
 <div id="selection">
     <div id="shape-1" class="shape" (click)="playRock()">

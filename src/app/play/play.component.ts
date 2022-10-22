@@ -23,6 +23,7 @@ export class PlayComponent implements OnInit {
     private playing = false;
 
     message!: string;
+    computerShape = '';
     growing = false;
 
     constructor(
@@ -31,7 +32,7 @@ export class PlayComponent implements OnInit {
 
     async ngOnInit(): Promise<void> {
         this.message = 'Select your shape to play the game!';
-
+        
         let shapeOverview = await this.gameService.getShapes();
         shapeOverview?._embedded.resourceList.forEach(shape => {
             this.shapes.set(shape.name.toLowerCase(), shape.resource);
@@ -58,6 +59,7 @@ export class PlayComponent implements OnInit {
         } 
 
         this.playing = true;
+        this.computerShape = '';
 
         let computer = await this.gameService.getComputerPlayer(this.computerUrl);
         console.log('computer shape', computer.shape);
@@ -90,6 +92,7 @@ export class PlayComponent implements OnInit {
                 break;
             }
         }
+        this.computerShape = computer.shape.toLowerCase();
 
         this.playing = false;
     }
