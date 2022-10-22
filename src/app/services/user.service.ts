@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Subject } from 'rxjs';
 import { Authentication } from '../model/authentication';
 
 @Injectable({
@@ -9,9 +10,15 @@ export class UserService {
 
     private authentication!: Authentication;
 
+    jwt:Subject<string> = new Subject();
+
     constructor(
         private http: HttpClient
     ) { }
+
+    broadcastJwtChange(text:string) {
+        this.jwt.next(text);
+    }
 
     getAuth() {
         return this.authentication;
