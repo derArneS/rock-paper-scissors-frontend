@@ -1,0 +1,77 @@
+:host {
+    display: flex;
+    flex-flow: column;
+    flex: 1 1 auto;
+    overflow-y: auto;
+}
+
+#result,
+#selection {
+    height: 50%;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 5rem;
+}
+
+.shape {
+    background-color: var(--background-color);
+    width: 6rem;
+    height: 6rem;
+    border: 0;
+    padding: 0;
+    border-radius: 50%;
+}
+
+.outer-circle,
+.inner-circle {
+    border-radius: 50%;
+    display: inline-block;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.outer-circle {
+    height: 6rem;
+    width: 6rem;
+    background-color: white;
+}
+
+.inner-circle {
+    height: 5rem;
+    width: 5rem;
+    background-color: var(--backgroud-color);
+}
+
+.inner-circle > fa-icon {
+    font-size: 2rem;
+}
+
+@keyframes fadeoutBg {
+    from { background-color: white; } /** from color **/
+    to { background-color: grey; } /** to color **/
+}
+
+.shape:hover > .outer-circle {
+    animation: fadeoutBg 300ms forwards;
+}
+
+.shape:active > .outer-circle > .inner-circle {
+    background-color: black;
+}
+
+#result {
+    font-size: 2rem;
+}
+
+@keyframes grow {
+    from { font-size: 2rem; }
+    to { font-size: 4rem; }
+}
+
+.growing {
+    animation: grow 1000ms forwards infinite;
+}
+

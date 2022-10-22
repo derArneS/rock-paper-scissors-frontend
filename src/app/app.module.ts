@@ -11,6 +11,7 @@ import { LoginComponent } from './login/login.component';
 import { StartPlayingComponent } from './start-playing/start-playing.component';
 import { HomeComponent } from './home/home.component';
 import { AboutComponent } from './about/about.component';
+import { PlayComponent } from './play/play.component';
 
 
 @NgModule({
@@ -20,7 +21,8 @@ import { AboutComponent } from './about/about.component';
     LoginComponent,
     StartPlayingComponent,
     HomeComponent,
-    AboutComponent
+    AboutComponent,
+    PlayComponent
   ],
   imports: [
     BrowserModule,

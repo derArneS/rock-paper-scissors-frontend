@@ -21,7 +21,7 @@ export class UserService {
         this.authentication = authentication
     }
 
-    authenticate(username: String, password: String) {
+    authenticate(username: string, password: string) {
         return this.http.post<Authentication>(
             'http://localhost:8080/authenticate',
             {

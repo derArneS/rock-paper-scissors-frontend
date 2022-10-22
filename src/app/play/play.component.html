@@ -1,0 +1,26 @@
+<div id="result" [ngClass]="{'growing': growing}">
+    {{message}}
+</div>
+<div id="selection">
+    <div id="shape-1" class="shape" (click)="playRock()">
+        <div class="outer-circle">
+            <div class="inner-circle">
+                <fa-icon [icon]="faRock" [styles]="{'color': 'white'}"></fa-icon>
+            </div>
+        </div>
+    </div>
+    <div id="shape-2" class="shape" (click)="playPaper()">
+        <div class="outer-circle">
+            <div class="inner-circle">
+                <fa-icon [icon]="faPaper" [styles]="{'color': 'white'}"></fa-icon>
+            </div>
+        </div>
+    </div>
+    <div id="shape-3" class="shape" (click)="playScissors()">
+        <div class="outer-circle">
+            <div class="inner-circle">
+                <fa-icon [icon]="faScissors" [styles]="{'color': 'white'}"></fa-icon>
+            </div>
+        </div>
+    </div>
+</div>

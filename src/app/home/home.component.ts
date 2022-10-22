@@ -9,7 +9,7 @@ import { UserService } from '../services/user.service';
 })
 export class HomeComponent implements OnInit {
 
-    jwt!: String;
+    jwt!: string;
 
     constructor(
         private userService: UserService
@@ -23,7 +23,7 @@ export class HomeComponent implements OnInit {
         return this.setJwt.bind(this);
     }
 
-    setJwt(jwt: String) {
+    setJwt(jwt: string) {
         this.jwt = jwt;
     }
 

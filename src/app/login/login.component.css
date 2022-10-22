@@ -1,5 +1,5 @@
 #login-form-wrapper {
-    height: 100%;
+    height: calc(100% - 2rem);
     display: flex;
     justify-content: center;
     align-items: center;
@@ -16,4 +16,12 @@ form > * {
 
 #username {
     margin-bottom: 1rem;
+}
+
+#login-footer > a {
+    color: white;
+    text-decoration: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }

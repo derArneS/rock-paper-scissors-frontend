@@ -7,6 +7,16 @@
     align-items: center;
 }
 
+h1, p {
+    margin: 0;
+    margin-bottom: 0.5rem;
+    color: white;
+}
+
+p {
+    margin-bottom: 3.5rem;
+}
+
 #play-inner-circle,
 #play-circle {
     border-radius: 50%;
@@ -21,7 +31,6 @@
     width: 4rem;
     background-color: white;
 }
-
 
 #play-inner-circle {
     height: 3rem;
