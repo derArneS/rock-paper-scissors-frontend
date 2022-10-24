@@ -1,0 +1,16 @@
+<div class="item item1">
+    <div class="wrapper">
+        <div class="inner-wrapper" (click)="delete()">
+            <fa-icon id="trashcan" [icon]="faTrash" [styles]="{'color': 'white'}"></fa-icon>
+        </div>
+    </div>
+</div>
+<div class="item item2">
+    <div class="header">
+        <h1>{{user.username}}</h1>
+        <div class="user-wrapper">
+            <h5>E-Mail: </h5>
+            <p>{{user.email}}</p>
+        </div>
+    </div>
+</div>

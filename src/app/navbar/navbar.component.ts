@@ -1,6 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { faPlaneDeparture, faUser } from '@fortawesome/free-solid-svg-icons';
-import { faLinkedin, faGithub } from '@fortAwesome/free-brands-svg-icons';
+import { faLinkedin, faGithub } from '@fortawesome/free-brands-svg-icons';
 import { UserService } from '../services/user.service';
 
 @Component({

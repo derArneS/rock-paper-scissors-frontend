@@ -1,6 +1,6 @@
-import { HttpClient, HttpErrorResponse } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { catchError, EMPTY, firstValueFrom, Observable, Subject, throwError } from 'rxjs';
+import { firstValueFrom, Subject } from 'rxjs';
 import { Authentication } from '../model/authentication';
 import { User } from '../model/user';
 
@@ -10,25 +10,15 @@ import { User } from '../model/user';
 })
 export class UserService {
 
-    private authentication!: Authentication;
+    private authentication!: Authentication | null;
 
+    
     jwt: Subject<string> = new Subject();
+    username?: string | null;
 
     constructor(
         private http: HttpClient
     ) { }
-
-    broadcastJwtChange(text: string) {
-        this.jwt.next(text);
-    }
-
-    getAuth() {
-        return this.authentication;
-    }
-
-    setAuth(authentication: Authentication) {
-        this.authentication = authentication
-    }
 
     authenticate(username: string, password: string) {
         console.debug('username', username);
@@ -65,4 +55,38 @@ export class UserService {
             )
         );
     }
+
+    deleteUser() {
+        const headerDict = {
+            'Authorization': 'Bearer '.concat(this.authentication!.accessToken)
+          }
+
+        this.http.delete<User>(
+            'http://localhost:8080/user/'.concat(this.username!),
+            {
+                headers: new HttpHeaders(headerDict)
+            }
+        ).subscribe();
+    }
+
+    getAuth() {
+        return this.authentication;
+    }
+
+    setAuth(authentication: Authentication) {
+        this.authentication = authentication
+    }
+
+    broadcastJwtChange(text: string) {
+        this.jwt.next(text);
+    }
+
+    logout() {
+        this.deleteUser();
+
+        this.authentication = null;
+        this.username = null;
+        this.broadcastJwtChange('');
+    }
+
 }

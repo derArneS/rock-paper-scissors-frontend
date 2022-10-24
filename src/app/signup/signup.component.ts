@@ -16,7 +16,8 @@ export class SignupComponent implements OnInit {
 
     username = new FormControl('', {
         validators: [
-            Validators.required
+            Validators.required,
+            Validators.minLength(3)
         ],
         asyncValidators: [
             usernameAlreadyExistsValidator(this.userService)
@@ -67,6 +68,7 @@ export class SignupComponent implements OnInit {
             (data: Authentication) => {
                 this.userService.setAuth(data);
                 this.userService.broadcastJwtChange(data.accessToken);
+                this.userService.username = createdUser.username;
                 console.debug('user authenticated', this.userService.getAuth())
                 this.router.navigateByUrl('/home');
             }

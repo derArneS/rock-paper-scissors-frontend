@@ -14,6 +14,7 @@ import { AboutComponent } from './about/about.component';
 import { PlayComponent } from './play/play.component';
 import { RulesComponent } from './rules/rules.component';
 import { SignupComponent } from './signup/signup.component';
+import { ProfileComponent } from './profile/profile.component';
 
 
 @NgModule({
@@ -26,7 +27,8 @@ import { SignupComponent } from './signup/signup.component';
     AboutComponent,
     PlayComponent,
     RulesComponent,
-    SignupComponent
+    SignupComponent,
+    ProfileComponent
   ],
   imports: [
     BrowserModule,

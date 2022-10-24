@@ -9,7 +9,7 @@ import { UserService } from '../services/user.service';
 })
 export class HomeComponent implements OnInit {
 
-    jwt!: string;
+    jwt!: string | undefined;
 
     constructor(
         private userService: UserService

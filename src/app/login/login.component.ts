@@ -33,6 +33,7 @@ export class LoginComponent implements OnInit {
         this.userService.authenticate(this.loginForm.value.username!, this.loginForm.value.password!).subscribe((data: Authentication) => {
             this.userService.setAuth(data);
             this.userService.broadcastJwtChange(data.accessToken);
+            this.userService.username = this.loginForm.value.username!;
             this.setJwt(data.accessToken);
             console.debug('this is the object', this.userService.getAuth())
         })

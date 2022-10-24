@@ -34,7 +34,6 @@
 .outer-circle,
 .inner-circle {
     border-radius: 50%;
-    display: inline-block;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -49,7 +48,7 @@
 .inner-circle {
     height: 5rem;
     width: 5rem;
-    background-color: var(--backgroud-color);
+    background-color: var(--background-color);
 }
 
 .inner-circle > fa-icon {
