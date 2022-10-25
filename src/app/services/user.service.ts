@@ -1,6 +1,7 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { firstValueFrom, Subject } from 'rxjs';
+import { environment } from 'src/environments/environment';
 import { Authentication } from '../model/authentication';
 import { User } from '../model/user';
 
@@ -12,7 +13,7 @@ export class UserService {
 
     private authentication!: Authentication | null;
 
-    
+
     jwt: Subject<string> = new Subject();
     username?: string | null;
 
@@ -23,7 +24,7 @@ export class UserService {
     authenticate(username: string, password: string) {
         console.debug('username', username);
         return this.http.post<Authentication>(
-            'http://localhost:8080/authenticate',
+            environment.baseUrl.concat('/authenticate'),
             {
                 "username": username,
                 "password": password
@@ -34,7 +35,7 @@ export class UserService {
     createUser(user: User) {
         return firstValueFrom<User>(
             this.http.post<User>(
-                'http://localhost:8080/user',
+                environment.baseUrl.concat('/user'),
                 user
             )
         );
@@ -43,7 +44,22 @@ export class UserService {
     readUserByUsername(username: string) {
         return firstValueFrom<User>(
             this.http.get<User>(
-                'http://localhost:8080/user?username='.concat(username)
+                environment.baseUrl.concat('/user?username=').concat(username)
+            )
+        );
+    }
+
+    readCompleteUserByUsername(username: string) {
+        const headerDict = {
+            'auth-token': this.authentication!.accessToken
+        }
+
+        return firstValueFrom<User>(
+            this.http.get<User>(
+                environment.baseUrl.concat('/user?username=').concat(username),
+                {
+                    headers: new HttpHeaders(headerDict)
+                }
             )
         );
     }
@@ -51,7 +67,7 @@ export class UserService {
     readUserByEmail(email: string) {
         return firstValueFrom<User>(
             this.http.get<User>(
-                'http://localhost:8080/user?email='.concat(email)
+                environment.baseUrl.concat('/user?email=').concat(email)
             )
         );
     }
@@ -59,10 +75,10 @@ export class UserService {
     deleteUser() {
         const headerDict = {
             'Authorization': 'Bearer '.concat(this.authentication!.accessToken)
-          }
+        }
 
         this.http.delete<User>(
-            'http://localhost:8080/user/'.concat(this.username!),
+            environment.baseUrl.concat('/user').concat(this.username!),
             {
                 headers: new HttpHeaders(headerDict)
             }

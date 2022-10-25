@@ -43,7 +43,7 @@
     grid-row: 2;
 }
 
-h1, h2, h3, h4, h5, p {
+h1, h2, h3, h4, h5, .entry, .stat {
     margin: 0.5rem;
     padding: 0.5rem;
     color: white;
@@ -53,10 +53,14 @@ h1 {
     font-size: 3rem;
 }
 
-h5, p {
+h2 {
+    font-size: 2rem;
+}
+
+h5, .entry {
     display: inline;
 }
 
-.user-wrapper {
+#user-wrapper, #stats-wrapper {
     margin: 1rem;
 }

@@ -8,9 +8,20 @@
 <div class="item item2">
     <div class="header">
         <h1>{{user.username}}</h1>
-        <div class="user-wrapper">
+        <div id="user-wrapper">
             <h5>E-Mail: </h5>
-            <p>{{user.email}}</p>
+            <div class="entry">{{user.email}}</div>
+        </div>
+        <h2>Statistics</h2>
+        <div id="stats-wrapper">
+            <h3>You picked these shapes:</h3>
+            <div class="stat">Rock: {{user.rock}}</div>
+            <div class="stat">Paper: {{user.paper}}</div>
+            <div class="stat">Scissors: {{user.scissors}}</div>
+            <h3>The computer picked these shapes:</h3>
+            <div class="stat">Rock: {{user.computerRock}}</div>
+            <div class="stat">Paper: {{user.computerPaper}}</div>
+            <div class="stat">Scissors: {{user.computerScissors}}</div>
         </div>
     </div>
 </div>

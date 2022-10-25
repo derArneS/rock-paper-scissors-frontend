@@ -1,25 +1,26 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { firstValueFrom } from 'rxjs';
+import { environment } from 'src/environments/environment';
 import { ComputerResponse } from '../model/computerresponse';
 import { GameResult } from '../model/gameresult';
 import { ShapeOverview } from '../model/shapeoverview';
+import { UserService } from './user.service';
 
 @Injectable({
     providedIn: 'root'
 })
 export class GameService {
-
-    private computerResponse!: ComputerResponse;
-
+    
     constructor(
-        private http: HttpClient
+        private http: HttpClient,
+        private userService: UserService
     ) { }
 
     getShapes() {
         return firstValueFrom<ShapeOverview>(
             this.http.get<ShapeOverview>(
-                'http://localhost:8080/shapes'
+                environment.baseUrl.concat('/shapes')
             )
         );
     }
@@ -30,13 +31,32 @@ export class GameService {
                 url
             )
         );
+
     }
 
     play(url: string) {
-        return firstValueFrom<GameResult>(
-            this.http.get<GameResult>(
-                url
-            )
-        );
+        let token: string | undefined = this.userService.getAuth()?.accessToken;
+        if (token) {
+            console.debug('token is true', token);
+            const headerDict = {
+                'auth-token': token
+            }
+
+            return firstValueFrom<GameResult>(
+                this.http.get<GameResult>(
+                    url,
+                    {
+                        headers: new HttpHeaders(headerDict)
+                    }
+                )
+            );
+        } else {
+            console.debug('token is false', token);
+            return firstValueFrom<GameResult>(
+                this.http.get<GameResult>(
+                    url
+                )
+            );
+        }
     }
 }

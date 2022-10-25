@@ -16,7 +16,13 @@ export class ProfileComponent implements OnInit {
     user: User = {
         username: '',
         email: '',
-        password: ''
+        password: '',
+        rock: 0,
+        paper: 0,
+        scissors: 0,
+        computerRock: 0,
+        computerPaper: 0,
+        computerScissors: 0,
     };
 
     constructor(
@@ -35,7 +41,7 @@ export class ProfileComponent implements OnInit {
     }
 
     async readUser() {
-        this.user = await this.userService.readUserByUsername(this.userService?.username!);
+        this.user = await this.userService.readCompleteUserByUsername(this.userService?.username!);
         // this.user = await this.userService.readUserByUsername('Arne');
     }
 
