@@ -1,7 +1,7 @@
 <div id="login-form-wrapper">
     <form id="login-form" [formGroup]="loginForm" (ngSubmit)="onSubmit()">
-        <input id="username" [ngClass]="{'invalid-user': usernameError}" type="text" formControlName="username" placeholder="Username" required>
-        <input id="password" [ngClass]="{'invalid-pw': passwordError}" type="password" formControlName="password" placeholder="Password" required>
+        <input id="username" [ngClass]="{'invalid-user': usernameError}" type="text" formControlName="username" placeholder="Username" autocomplete="username" required>
+        <input id="password" [ngClass]="{'invalid-pw': passwordError}" type="password" formControlName="password" placeholder="Password" autocomplete="current-password" required>
         <button class="button submit-button" type="submit" [disabled]="username.invalid || password.invalid">login</button>
     </form>
 </div>
