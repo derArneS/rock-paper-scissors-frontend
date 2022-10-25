@@ -22,3 +22,24 @@ input {
 .ng-touched.ng-invalid {
     border-color: red;
 } 
+
+.submit-button {
+    padding: 0.75rem;
+    font-size: 0.9rem;
+    background-color: white;
+    border-radius: 1.5rem;
+    color: var(--background-color);
+}
+
+.submit-button:disabled {
+    background-color: rgb(50, 50, 50);
+}
+
+@keyframes fadeoutBg {
+    from { background-color: white; } /** from color **/
+    to { background-color: grey; } /** to color **/
+}
+
+.submit-button:not(:disabled):hover {
+    animation: fadeoutBg 100ms forwards;
+}

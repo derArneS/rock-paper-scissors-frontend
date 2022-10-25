@@ -25,6 +25,15 @@ input:not(:placeholder-shown):invalid {
     margin-top: 1rem;
 }
 
+.submit-button {
+    width: 50%;
+    padding: 0.75rem;
+    font-size: 0.9rem;
+    background-color: white;
+    border-radius: 1.5rem;
+    color: var(--background-color);
+}
+
 #login-footer {
     height: 2rem;
 }
@@ -35,4 +44,13 @@ input:not(:placeholder-shown):invalid {
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+@keyframes fadeoutBg {
+    from { background-color: white; } /** from color **/
+    to { background-color: grey; } /** to color **/
+}
+
+.submit-button:not(:disabled):hover {
+    animation: fadeoutBg 100ms forwards;
 }

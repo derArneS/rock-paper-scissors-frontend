@@ -2,5 +2,5 @@
     <input id="username" type="text" placeholder="Username" required [formControl]="username" autocomplete="username">
     <input id="email" type="email" placeholder="E-Mail" required [formControl]="email" autocomplete="email">
     <input id="password" type="password" placeholder="Password" required [formControl]="password" autocomplete="new-password">
-    <button type="submit" [disabled]="username.invalid || email.invalid || password.invalid">sign up</button>
+    <button class="submit-button" type="submit" [disabled]="username.invalid || email.invalid || password.invalid">sign up</button>
 </form>
