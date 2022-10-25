@@ -1,6 +1,6 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { firstValueFrom, Subject } from 'rxjs';
+import { firstValueFrom, retry, Subject } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { Authentication } from '../model/authentication';
 import { User } from '../model/user';
@@ -37,7 +37,7 @@ export class UserService {
             this.http.post<User>(
                 environment.baseUrl.concat('/user'),
                 user
-            )
+            ).pipe(retry(2))
         );
     }
 
