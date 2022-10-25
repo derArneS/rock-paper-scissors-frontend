@@ -34,7 +34,8 @@ export class ProfileComponent implements OnInit {
         let jwt = this.userService.getAuth()?.accessToken;
 
         if (!jwt) {
-            this.router.navigateByUrl('/home')
+            console.debug('navigate to /home because the user is not logged in');
+            this.router.navigateByUrl('/home');
         }
 
         this.readUser();
@@ -42,12 +43,12 @@ export class ProfileComponent implements OnInit {
 
     async readUser() {
         this.user = await this.userService.readCompleteUserByUsername(this.userService?.username!);
-        // this.user = await this.userService.readUserByUsername('Arne');
     }
 
     delete() {
-        console.log('click')
-        this.userService.logout();
-        this.router.navigateByUrl('/home')
+        console.debug('logout and delete user');
+        this.userService.logoutAndDeleteUser();
+        console.debug('navigate to /home because the user is now logged out');
+        this.router.navigateByUrl('/home');
     }
 }

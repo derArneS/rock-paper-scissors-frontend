@@ -67,13 +67,13 @@ export class PlayComponent implements OnInit {
 
         this.growing = true;
         this.message = '3';
-        await firstValueFrom(timer(1000).pipe(take(1)));
+        await firstValueFrom(timer(1000).pipe(take(1))); // sleep for 1 second
 
         this.message = '2';
-        await firstValueFrom(timer(1000).pipe(take(1)));
+        await firstValueFrom(timer(1000).pipe(take(1))); // sleep for 1 second
 
         this.message = '1';
-        await firstValueFrom(timer(1000).pipe(take(1)));
+        await firstValueFrom(timer(1000).pipe(take(1))); // sleep for 1 second
 
         this.growing = false;
 

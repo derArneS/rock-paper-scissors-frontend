@@ -55,29 +55,33 @@ export class LoginComponent implements OnInit {
             .pipe(
                 catchError((error: HttpErrorResponse) => {
                     console.debug('error in authentication happend', error);
-                    
+
                     // 401 means username not found
-                    if(error.status == 401) {
+                    if (error.status == 401) {
                         this.usernameError = true;
                         return EMPTY;
                     }
 
                     // 403 means wrong password
-                    if(error.status == 403) {
+                    if (error.status == 403) {
                         this.passwordError = true;
                         return EMPTY;
                     }
-                
+
                     return throwError(() => new Error('ups something happened'));
                 })
             ).subscribe((data: Authentication) => {
+                // reset errors
                 this.usernameError = false;
                 this.passwordError = false;
                 this.userService.setAuth(data);
                 this.userService.broadcastJwtChange(data.accessToken);
                 this.userService.username = this.loginForm.value.username!;
+
+                // call function from home component so the login component is removed from the page
                 this.setJwt(data.accessToken);
-                console.debug('this is the object', this.userService.getAuth())
+
+                console.debug('authentication successful', this.userService.getAuth())
             })
 
     }

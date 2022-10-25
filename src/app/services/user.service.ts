@@ -72,7 +72,7 @@ export class UserService {
         );
     }
 
-    deleteUser() {
+    private deleteUser() {
         const headerDict = {
             'Authorization': 'Bearer '.concat(this.authentication!.accessToken)
         }
@@ -97,7 +97,7 @@ export class UserService {
         this.jwt.next(text);
     }
 
-    logout() {
+    logoutAndDeleteUser() {
         this.deleteUser();
 
         this.authentication = null;

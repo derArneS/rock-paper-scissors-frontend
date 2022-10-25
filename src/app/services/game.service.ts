@@ -11,7 +11,7 @@ import { UserService } from './user.service';
     providedIn: 'root'
 })
 export class GameService {
-    
+
     constructor(
         private http: HttpClient,
         private userService: UserService
@@ -36,6 +36,8 @@ export class GameService {
 
     play(url: string) {
         let token: string | undefined = this.userService.getAuth()?.accessToken;
+
+        // if the token is set, it should be send as a header, because then the statistics will be updated
         if (token) {
             console.debug('token is true', token);
             const headerDict = {
