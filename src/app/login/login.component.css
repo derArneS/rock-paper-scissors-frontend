@@ -64,6 +64,7 @@ input {
     100% {transform: rotate(0deg);}
 }
 
+.invalid-user,
 .invalid-pw {
     animation: wiggle 333ms 3;
     border-color: red;

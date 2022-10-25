@@ -12,9 +12,11 @@ import { UserService } from '../services/user.service';
 })
 export class LoginComponent implements OnInit {
 
+    // function from the home component
     @Input() setJwt!: Function;
 
-    loginError = false;
+    usernameError = false;
+    passwordError = false;
 
     username = new FormControl('', {
         validators: [
@@ -46,22 +48,31 @@ export class LoginComponent implements OnInit {
     }
 
     onSubmit(): void {
-        this.loginError = false;
-        console.debug('Your login has been submitted', this.loginForm.value);
+        this.usernameError = false;
+        this.passwordError = false;
+        console.debug('Your login has been submitted', this.loginForm.value.username);
         this.userService.authenticate(this.loginForm.value.username!, this.loginForm.value.password!)
             .pipe(
                 catchError((error: HttpErrorResponse) => {
                     console.debug('error in authentication happend', error);
                     
+                    // 401 means username not found
+                    if(error.status == 401) {
+                        this.usernameError = true;
+                        return EMPTY;
+                    }
+
+                    // 403 means wrong password
                     if(error.status == 403) {
-                        this.loginError = true;
+                        this.passwordError = true;
                         return EMPTY;
                     }
                 
                     return throwError(() => new Error('ups something happened'));
                 })
             ).subscribe((data: Authentication) => {
-                this.loginError = false;
+                this.usernameError = false;
+                this.passwordError = false;
                 this.userService.setAuth(data);
                 this.userService.broadcastJwtChange(data.accessToken);
                 this.userService.username = this.loginForm.value.username!;
