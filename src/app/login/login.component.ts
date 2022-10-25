@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { FormBuilder } from '@angular/forms';
+import { FormBuilder, FormControl, Validators } from '@angular/forms';
 import { Authentication } from '../model/authentication';
 import { UserService } from '../services/user.service';
 
@@ -12,9 +12,22 @@ export class LoginComponent implements OnInit {
 
     @Input() setJwt!: Function;
 
+    username = new FormControl('', {
+        validators: [
+            Validators.required,
+            Validators.minLength(3)
+        ]
+    });
+
+    password = new FormControl('', {
+        validators: [
+            Validators.minLength(3)
+        ]
+    });
+
     loginForm = this.formBuilder.group({
-        username: '',
-        password: ''
+        username: this.username,
+        password: this.password
     });
 
     constructor(

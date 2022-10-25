@@ -15,9 +15,10 @@ input {
     border: 2px solid white;
     border-radius: 1.5rem;
     color: white;
+    transition: border-color 2s;
 }
 
-input:not(:placeholder-shown):invalid {
+.ng-touched.ng-invalid {
     border-color: red;
 } 
 
@@ -32,6 +33,11 @@ input:not(:placeholder-shown):invalid {
     background-color: white;
     border-radius: 1.5rem;
     color: var(--background-color);
+    transition: background-color 200ms;
+}
+
+.submit-button:disabled {
+    background-color: rgb(50, 50, 50);
 }
 
 #login-footer {
@@ -46,11 +52,6 @@ input:not(:placeholder-shown):invalid {
     align-items: center;
 }
 
-@keyframes fadeoutBg {
-    from { background-color: white; } /** from color **/
-    to { background-color: grey; } /** to color **/
-}
-
 .submit-button:not(:disabled):hover {
-    animation: fadeoutBg 100ms forwards;
+    background-color: grey;
 }
