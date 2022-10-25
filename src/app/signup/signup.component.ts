@@ -26,7 +26,8 @@ export class SignupComponent implements OnInit {
 
     email = new FormControl('', {
         validators: [
-            Validators.required
+            Validators.required,
+            Validators.email
         ],
         asyncValidators: [
             emailAlreadyExistsValidator(this.userService)
@@ -35,6 +36,7 @@ export class SignupComponent implements OnInit {
 
     password = new FormControl('', {
         validators: [
+            Validators.required,
             Validators.minLength(3)
         ]
     });
