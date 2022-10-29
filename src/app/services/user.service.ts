@@ -78,7 +78,7 @@ export class UserService {
         }
 
         this.http.delete<User>(
-            environment.baseUrl.concat('/user').concat(this.username!),
+            environment.baseUrl.concat('/user/').concat(this.username!),
             {
                 headers: new HttpHeaders(headerDict)
             }
